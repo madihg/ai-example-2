@@ -13,11 +13,7 @@ import {
 import Textarea from "react-textarea-autosize";
 import Image from "next/image";
 
-const examples = [
-  "Example 1",
-  "Example 2",
-  "Example 3",
-];
+const examples = ["Example 1", "Example 2", "Example 3"];
 
 export default function Chat() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -35,16 +31,18 @@ export default function Chat() {
   const disabled = isLoading || input.length === 0;
 
   return (
-    <main className="flex flex-col items-center justify-between pb-40">
-      <div className="absolute top-5 hidden w-full justify-between px-5 sm:flex">
-      </div>
+    <main
+      className="flex flex-col items-center justify-between pb-40"
+      style={{ backgroundColor: "purple", fontFamily: "Times New Roman, serif" }}
+    >
+      <div className="absolute top-5 hidden w-full justify-between px-5 sm:flex"></div>
       {messages.length > 0 ? (
         messages.map((message, i) => (
           <div
             key={i}
             className={clsx(
               "flex w-full items-center justify-center border-b border-gray-200 py-8",
-              message.role === "user" ? "bg-white" : "bg-gray-100",
+              message.role === "user" ? "bg-white" : "bg-gray-100"
             )}
           >
             <div className="flex w-full max-w-screen-md items-start space-x-4 px-5 sm:px-0">
@@ -52,7 +50,7 @@ export default function Chat() {
                 className={clsx(
                   message.role === "assistant"
                     ? "bg-white"
-                    : "bg-black p-1.5 text-white",
+                    : "bg-black p-1.5 text-white"
                 )}
               >
                 {message.role === "user" ? (
@@ -94,7 +92,8 @@ export default function Chat() {
                 className="font-medium underline underline-offset-4 transition-colors hover:text-black"
               >
                 Halim Madi
-              </a>. I was built using{" "}
+              </a>
+              . I was built using{" "}
               <a
                 href="https://openai.com/blog/gpt-3-5-turbo-fine-tuning-and-api-updates"
                 target="_blank"
@@ -148,9 +147,7 @@ export default function Chat() {
           <button
             className={clsx(
               "absolute inset-y-0 right-3 my-auto flex h-8 w-8 items-center justify-center rounded-md transition-all",
-              disabled
-                ? "cursor-not-allowed bg-white"
-                : "bg-green-500 hover:bg-green-600",
+              disabled ? "cursor-not-allowed bg-white" : "bg-green-500 hover:bg-green-600"
             )}
             disabled={disabled}
           >
@@ -160,42 +157,12 @@ export default function Chat() {
               <SendIcon
                 className={clsx(
                   "h-4 w-4",
-                  input.length === 0 ? "text-gray-300" : "text-white",
+                  input.length === 0 ? "text-gray-300" : "text-white"
                 )}
               />
             )}
           </button>
         </form>
-        <p className="text-center text-xs text-gray-400">
-          Built with{" "}
-          <a
-            href="https://sdk.vercel.ai/docs"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-colors hover:text-black"
-          >
-            Vercel AI SDK
-          </a>
-          ,{" "}
-          <a
-            href="https://openai.com/blog/gpt-3-5-turbo-fine-tuning-and-api-updates"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-colors hover:text-black"
-          >
-            OpenAI GPT-3.5-turbo, as part of a course taught by
-          </a>{" "}
-          Halim Madi.{" "}
-          <a
-            href="https://linkin.bio/yallahalim/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-colors hover:text-black"
-          >
-            Learn to build your own
-          </a>
-          .
-        </p>
       </div>
     </main>
   );
